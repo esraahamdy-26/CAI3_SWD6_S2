@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class studentsMarks {
     public static void main(String[] args) {
@@ -51,6 +52,34 @@ public class studentsMarks {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         System.out.println("Number of students pass is " + pass + " While number of failed students is " + (sMarks.length - pass));
+        
+        // Searching for specific mark using binary search algorithm
+        
+        System.out.print("Enter the mark you want search for: ");
+        int scr = input.nextInt();
+        Arrays.sort(sMarks);
+        int low = 0;
+        int high = sMarks.length-1;
+        short flag = 0;
+        for (int i=0; i< sMarks.length; i++)
+        {
+            int mid = (low+ high)/2;
+            if (sMarks[mid] == scr)
+            {
+                System.out.println("Mark has found at index "+ mid);
+                flag = 1;
+                break;
+            } else if (sMarks[mid] > scr) {
+                high = mid -1;
+            }
+            else {
+                low = mid +1;
+            }
+        }
+        if (flag == 0)
+        {
+            System.out.println("Sorry, mark you have entered not found.");
+        }
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
     }
